@@ -11,7 +11,6 @@ class Context:
     def get(self, path, **kwargs):
         kwargs['api_key'] = self.api_key
         url = "https://{}.api.riotgames.com/{}".format(self.region, path)
-        print(url)
         return requests.get(url, params=kwargs)
 
 
