@@ -4,19 +4,20 @@ from keyword import iskeyword
 
 
 class Context:
-    def __init__(self, api_key, region):
+    def __init__(self, api_key, region, client):
         self.api_key = api_key
         self.region = region
+        self.client = client
 
     def get(self, path, **kwargs):
         kwargs['api_key'] = self.api_key
         url = "https://{}.api.riotgames.com/{}".format(self.region, path)
-        return requests.get(url, params=kwargs)
+        return self.client.get(url, params=kwargs)
 
 
 class ApiType:
     def __init__(self, dict):
-        for name, value in dict.items():
+        for name in dict.keys():
             if iskeyword(name):
                 name = '_' + name
             if name not in self.__annotations__:
@@ -48,12 +49,12 @@ class ApiType:
 
 
 def convert(value):
-    if(isinstance(value, bool)):
+    if isinstance(value, bool):
         return 'true' if value else 'false'
 
 
 def api_function(path: str, type, *required, **optional):
-    def __inner__(*args, **kwargs):
+    async def __inner__(*args, **kwargs):
         if len(args) > 0 and isinstance(args[0], Context):
             context = args[0]
             args = args[1:]
@@ -66,15 +67,18 @@ def api_function(path: str, type, *required, **optional):
         if len(args) != len(required):
             raise TypeError("takes exactly {} argument ({} given)".format(len(required), len(args)))
         resolved_path = path.format(*args)
-        options = {k:convert(v) for k,v in kwargs.items() if k in optional}
-        response = context.get(resolved_path, **options)
-        if(response.status_code >= 300): raise Exception(response.text)
-        if issubclass(type, Mapping):
-            t = type.__args__[1]
-            return {k: t(v) for k, v in response.json().items()}
-        elif issubclass(type, List):
-            t = type.__args__[0]
-            return [t(i) for i in response.json()]
-        return type(response.json())
+        options = {k: convert(v) for k, v in kwargs.items() if k in optional}
+        async with context.get(resolved_path, **options) as response:
+            if response.status >= 300:
+                raise Exception(response.text)
+            json = await response.json()
+            if issubclass(type, Mapping):
+                t = type.__args__[1]
+                return {k: t(v) for k, v in json.items()}
+            elif issubclass(type, List):
+                t = type.__args__[0]
+                return [t(i) for i in json]
+            return type(json)
+
     __inner__._is_api_func = True
     return __inner__

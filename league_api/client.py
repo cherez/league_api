@@ -7,7 +7,7 @@ class Client(Context):
 
 # TODO:
 # Caching
-# Rate limiting
+# Rate limiting - This should be straightforward; use semaphores and coroutines to release them
 for name, func in operations.__dict__.items():
     if not getattr(func, '_is_api_func', False):
         continue
