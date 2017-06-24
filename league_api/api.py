@@ -1,4 +1,6 @@
 from typing import Mapping, List
+
+import aiohttp
 import requests
 from keyword import iskeyword
 
@@ -69,8 +71,7 @@ def api_function(path: str, type, *required, **optional):
         resolved_path = path.format(*args)
         options = {k: convert(v) for k, v in kwargs.items() if k in optional}
         async with context.get(resolved_path, **options) as response:
-            if response.status >= 300:
-                raise Exception(response.text)
+            response.raise_for_status()  # throw an exception on bad response
             json = await response.json()
             if issubclass(type, Mapping):
                 t = type.__args__[1]
