@@ -10,7 +10,7 @@ class ${type['name']}(ApiType):
 % for field in type['fields']:
 <% if iskeyword(field['name']): field['name'] = '_' + field['name'] %>\
 %   if field['name'] != 'from':
-    ${field['name']}: ${field['type']} = None${'  # ' + field['doc'] if field['doc'] else ''}
+    ${field['name']}: ${field['type']} = None${'  # ' + field['doc'].replace('\n', '\t') if field['doc'] else ''}
 %   endif
 % endfor
 

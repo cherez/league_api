@@ -10,9 +10,9 @@ class FeaturedGameInfo(ApiType):
     gameId: int = None  # The ID of the game
     gameStartTime: int = None  # The game start time represented in epoch milliseconds
     platformId: str = None  # The ID of the platform on which the game is being played
-    gameMode: str = None  # The game mode
+    gameMode: str = None  # The game mode	             (Legal values:  CLASSIC,  ODIN,  ARAM,  TUTORIAL,  ONEFORALL,  ASCENSION,  FIRSTBLOOD,  KINGPORO)
     mapId: int = None  # The ID of the map
-    gameType: str = None  # The game type
+    gameType: str = None  # The game type	             (Legal values:  CUSTOM_GAME,  MATCHED_GAME,  TUTORIAL_GAME)
     bannedChampions: List[BannedChampion] = None  # Banned champion information
     observers: Observer = None  # The observer information
     participants: List[Participant] = None  # The participant information

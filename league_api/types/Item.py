@@ -1,20 +1,19 @@
 from league_api.api import ApiType
 from typing import List, Mapping
 
-from .BasicDataStats import BasicDataStats
 from .Gold import Gold
 from .Image import Image
-from .MetaData import MetaData
+from .InventoryDataStats import InventoryDataStats
 
 
 class Item(ApiType):
-    gold: Gold = None  # Data Dragon includes the gold field for basic data, which is shared by both rune and item. However, only items have a gold field on them, representing their gold cost in the store. Since runes are not sold in the store, they have no gold cost.
+    gold: Gold = None
     plaintext: str = None
     hideFromAll: bool = None
     inStore: bool = None
     into: List[str] = None
     id: int = None
-    stats: BasicDataStats = None
+    stats: InventoryDataStats = None
     colloq: str = None
     maps: Mapping[str, bool] = None
     specialRecipe: int = None
@@ -30,7 +29,6 @@ class Item(ApiType):
     consumed: bool = None
     sanitizedDescription: str = None
     depth: int = None
-    rune: MetaData = None
     stacks: int = None
 
     @property

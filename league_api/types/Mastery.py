@@ -5,15 +5,15 @@ from .Image import Image
 
 
 class Mastery(ApiType):
-    masteryId: int = None  # The ID of the mastery
-    rank: int = None  # The number of points put into this mastery by the user
-    id: int = None  # Mastery ID. For static information correlating to masteries, please refer to the LoL Static Data API.
+    masteryId: int = None
+    rank: int = None
     prereq: str = None
     masteryTree: str = None  # (Legal values:  Cunning,  Ferocity,  Resolve)
     name: str = None
     ranks: int = None
     image: Image = None
     sanitizedDescription: List[str] = None
+    id: int = None
     description: List[str] = None
 
     @property

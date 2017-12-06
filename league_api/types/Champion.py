@@ -11,6 +11,12 @@ from .Stats import Stats
 
 
 class Champion(ApiType):
+    rankedPlayEnabled: bool = None  # Ranked play enabled flag.
+    botEnabled: bool = None  # Bot enabled flag (for custom games).
+    botMmEnabled: bool = None  # Bot Match Made enabled flag (for Co-op vs. AI games).
+    active: bool = None  # Indicates if the champion is active.
+    freeToPlay: bool = None  # Indicates if the champion is free to play. Free to play champions are rotated periodically.
+    id: int = None  # Champion ID. For static information correlating to champion IDs, please refer to the LoL Static Data API.
     info: Info = None
     enemytips: List[str] = None
     stats: Stats = None
@@ -25,14 +31,8 @@ class Champion(ApiType):
     allytips: List[str] = None
     key: str = None
     lore: str = None
-    id: int = None
     blurb: str = None
     spells: List[ChampionSpell] = None
-    rankedPlayEnabled: bool = None  # Ranked play enabled flag.
-    botEnabled: bool = None  # Bot enabled flag (for custom games).
-    botMmEnabled: bool = None  # Bot Match Made enabled flag (for Co-op vs. AI games).
-    active: bool = None  # Indicates if the champion is active.
-    freeToPlay: bool = None  # Indicates if the champion is free to play. Free to play champions are rotated periodically.
 
     @property
     def ranked_play_enabled(self):

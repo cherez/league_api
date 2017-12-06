@@ -12,11 +12,11 @@ class LeaguePosition(ApiType):
     wins: int = None
     veteran: bool = None
     losses: int = None
-    playerOrTeamId: str = None
-    leagueName: str = None
+    freshBlood: bool = None
+    leagueId: str = None
     playerOrTeamName: str = None
     inactive: bool = None
-    freshBlood: bool = None
+    playerOrTeamId: str = None
     tier: str = None
     leaguePoints: int = None
 
@@ -45,20 +45,20 @@ class LeaguePosition(ApiType):
         self.miniSeries = value
 
     @property
-    def player_or_team_id(self):
-        return self.playerOrTeamId
+    def fresh_blood(self):
+        return self.freshBlood
 
-    @player_or_team_id.setter
-    def player_or_team_id(self, value):
-        self.playerOrTeamId = value
+    @fresh_blood.setter
+    def fresh_blood(self, value):
+        self.freshBlood = value
 
     @property
-    def league_name(self):
-        return self.leagueName
+    def league_id(self):
+        return self.leagueId
 
-    @league_name.setter
-    def league_name(self, value):
-        self.leagueName = value
+    @league_id.setter
+    def league_id(self, value):
+        self.leagueId = value
 
     @property
     def player_or_team_name(self):
@@ -69,12 +69,12 @@ class LeaguePosition(ApiType):
         self.playerOrTeamName = value
 
     @property
-    def fresh_blood(self):
-        return self.freshBlood
+    def player_or_team_id(self):
+        return self.playerOrTeamId
 
-    @fresh_blood.setter
-    def fresh_blood(self, value):
-        self.freshBlood = value
+    @player_or_team_id.setter
+    def player_or_team_id(self, value):
+        self.playerOrTeamId = value
 
     @property
     def league_points(self):

@@ -41,11 +41,13 @@ def un_dto(string):
 def sanitize_type(string):
     string = un_dto(string)
     string = re.sub(r'\blong\b', 'int', string)
+    string = re.sub(r'\bLong\b', 'int', string)
     string = re.sub(r'\bdouble\b', 'float', string)
     string = re.sub(r'\bboolean\b', 'bool', string)
     string = re.sub(r'\bMap\b', 'Mapping', string)
     string = re.sub(r'\bSet\b', 'List', string)
     string = re.sub(r'\bstring\b', 'str', string)
+    string = re.sub(r'\bString\b', 'str', string)
     return string
 
 
