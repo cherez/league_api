@@ -8,10 +8,11 @@ class ChampionMastery(ApiType):
     championLevel: int = None  # Champion level for specified player and champion combination.
     championPoints: int = None  # Total number of champion points for this player and champion combination - they are used to determine championLevel.
     championId: int = None  # Champion ID for this entry.
-    playerId: int = None  # Player ID for this entry.
     championPointsUntilNextLevel: int = None  # Number of points needed to achieve next level. Zero if player reached maximum champion level for this champion.
-    championPointsSinceLastLevel: int = None  # Number of points earned since current level has been achieved. Zero if player reached maximum champion level for this champion.
     lastPlayTime: int = None  # Last time this champion was played by this player - in Unix milliseconds time format.
+    tokensEarned: int = None  # The token earned for this champion to levelup.
+    championPointsSinceLastLevel: int = None  # Number of points earned since current level has been achieved.
+    summonerId: str = None  # Summoner ID for this entry. (Encrypted)
 
     @property
     def chest_granted(self):
@@ -46,20 +47,28 @@ class ChampionMastery(ApiType):
         self.championId = value
 
     @property
-    def player_id(self):
-        return self.playerId
-
-    @player_id.setter
-    def player_id(self, value):
-        self.playerId = value
-
-    @property
     def champion_points_until_next_level(self):
         return self.championPointsUntilNextLevel
 
     @champion_points_until_next_level.setter
     def champion_points_until_next_level(self, value):
         self.championPointsUntilNextLevel = value
+
+    @property
+    def last_play_time(self):
+        return self.lastPlayTime
+
+    @last_play_time.setter
+    def last_play_time(self, value):
+        self.lastPlayTime = value
+
+    @property
+    def tokens_earned(self):
+        return self.tokensEarned
+
+    @tokens_earned.setter
+    def tokens_earned(self, value):
+        self.tokensEarned = value
 
     @property
     def champion_points_since_last_level(self):
@@ -70,10 +79,10 @@ class ChampionMastery(ApiType):
         self.championPointsSinceLastLevel = value
 
     @property
-    def last_play_time(self):
-        return self.lastPlayTime
+    def summoner_id(self):
+        return self.summonerId
 
-    @last_play_time.setter
-    def last_play_time(self, value):
-        self.lastPlayTime = value
+    @summoner_id.setter
+    def summoner_id(self, value):
+        self.summonerId = value
 

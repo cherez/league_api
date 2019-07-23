@@ -7,11 +7,11 @@ class Player(ApiType):
     currentPlatformId: str = None
     summonerName: str = None
     matchHistoryUri: str = None
-    platformId: str = None
-    currentAccountId: int = None
+    platformId: str = None  # Original platformId.
+    currentAccountId: str = None  # Player's current accountId (Encrypted)
     profileIcon: int = None
-    summonerId: int = None
-    accountId: int = None
+    summonerId: str = None  # Player's summonerId (Encrypted)
+    accountId: str = None  # Player's original accountId (Encrypted)
 
     @property
     def current_platform_id(self):

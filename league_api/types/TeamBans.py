@@ -4,8 +4,8 @@ from typing import List, Mapping
 
 
 class TeamBans(ApiType):
-    pickTurn: int = None
-    championId: int = None
+    pickTurn: int = None  # Turn during which the champion was banned.
+    championId: int = None  # Banned championId.
 
     @property
     def pick_turn(self):

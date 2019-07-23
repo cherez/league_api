@@ -7,7 +7,7 @@ from .MatchParticipantFrame import MatchParticipantFrame
 
 class MatchFrame(ApiType):
     timestamp: int = None
-    participantFrames: Mapping[int, MatchParticipantFrame] = None
+    participantFrames: Mapping[str, MatchParticipantFrame] = None
     events: List[MatchEvent] = None
 
     @property

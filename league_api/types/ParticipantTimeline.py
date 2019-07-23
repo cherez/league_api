@@ -4,16 +4,16 @@ from typing import List, Mapping
 
 
 class ParticipantTimeline(ApiType):
-    lane: str = None
+    lane: str = None  # Participant's calculated lane. MID and BOT are legacy values.	             (Legal values:  MID,  MIDDLE,  TOP,  JUNGLE,  BOT,  BOTTOM)
     participantId: int = None
-    csDiffPerMinDeltas: Mapping[str, float] = None
-    goldPerMinDeltas: Mapping[str, float] = None
-    xpDiffPerMinDeltas: Mapping[str, float] = None
-    creepsPerMinDeltas: Mapping[str, float] = None
-    xpPerMinDeltas: Mapping[str, float] = None
-    role: str = None
-    damageTakenDiffPerMinDeltas: Mapping[str, float] = None
-    damageTakenPerMinDeltas: Mapping[str, float] = None
+    csDiffPerMinDeltas: Mapping[str, float] = None  # Creep score difference versus the calculated lane opponent(s) for a specified period.
+    goldPerMinDeltas: Mapping[str, float] = None  # Gold for a specified period.
+    xpDiffPerMinDeltas: Mapping[str, float] = None  # Experience difference versus the calculated lane opponent(s) for a specified period.
+    creepsPerMinDeltas: Mapping[str, float] = None  # Creeps for a specified period.
+    xpPerMinDeltas: Mapping[str, float] = None  # Experience change for a specified period.
+    role: str = None  # Participant's calculated role.	             (Legal values:  DUO,  NONE,  SOLO,  DUO_CARRY,  DUO_SUPPORT)
+    damageTakenDiffPerMinDeltas: Mapping[str, float] = None  # Damage taken difference versus the calculated lane opponent(s) for a specified period.
+    damageTakenPerMinDeltas: Mapping[str, float] = None  # Damage taken for a specified period.
 
     @property
     def participant_id(self):

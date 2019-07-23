@@ -15,12 +15,12 @@ class Participant(ApiType):
     spell2Id: int = None  # The ID of the second summoner spell used by this participant
     teamId: int = None  # The team ID of this participant, indicating the participant's team
     spell1Id: int = None  # The ID of the first summoner spell used by this participant
-    stats: ParticipantStats = None
+    stats: ParticipantStats = None  # Participant statistics.
     participantId: int = None
-    runes: List[Rune] = None
-    timeline: ParticipantTimeline = None
-    masteries: List[Mastery] = None
-    highestAchievedSeasonTier: str = None
+    runes: List[Rune] = None  # List of legacy Rune information. Not included for matches played with Runes Reforged.
+    timeline: ParticipantTimeline = None  # Participant timeline data.
+    masteries: List[Mastery] = None  # List of legacy Mastery information. Not included for matches played with Runes Reforged.
+    highestAchievedSeasonTier: str = None  # Highest ranked tier achieved for the previous season in a specific subset of queueIds, if any, otherwise null. Used to display border in game loading screen. Please refer to the Ranked Info documentation.	             (Legal values:  CHALLENGER,  MASTER,  DIAMOND,  PLATINUM,  GOLD,  SILVER,  BRONZE,  UNRANKED)
 
     @property
     def profile_icon_id(self):

@@ -4,8 +4,8 @@ from typing import List, Mapping
 
 
 class MiniSeries(ApiType):
-    wins: int = None
+    progress: str = None
     losses: int = None
     target: int = None
-    progress: str = None
+    wins: int = None
 

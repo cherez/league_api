@@ -5,22 +5,22 @@ from .TeamBans import TeamBans
 
 
 class TeamStats(ApiType):
-    firstDragon: bool = None
-    firstInhibitor: bool = None
-    bans: List[TeamBans] = None
-    baronKills: int = None
-    firstRiftHerald: bool = None
-    firstBaron: bool = None
-    riftHeraldKills: int = None
-    firstBlood: bool = None
-    teamId: int = None
-    firstTower: bool = None
-    vilemawKills: int = None
-    inhibitorKills: int = None
-    towerKills: int = None
-    dominionVictoryScore: int = None
-    win: str = None
-    dragonKills: int = None
+    firstDragon: bool = None  # Flag indicating whether or not the team scored the first Dragon kill.
+    firstInhibitor: bool = None  # Flag indicating whether or not the team destroyed the first inhibitor.
+    bans: List[TeamBans] = None  # If match queueId has a draft, contains banned champion data, otherwise empty.
+    baronKills: int = None  # Number of times the team killed Baron.
+    firstRiftHerald: bool = None  # Flag indicating whether or not the team scored the first Rift Herald kill.
+    firstBaron: bool = None  # Flag indicating whether or not the team scored the first Baron kill.
+    riftHeraldKills: int = None  # Number of times the team killed Rift Herald.
+    firstBlood: bool = None  # Flag indicating whether or not the team scored the first blood.
+    teamId: int = None  # 100 for blue side. 200 for red side.
+    firstTower: bool = None  # Flag indicating whether or not the team destroyed the first tower.
+    vilemawKills: int = None  # Number of times the team killed Vilemaw.
+    inhibitorKills: int = None  # Number of inhibitors the team destroyed.
+    towerKills: int = None  # Number of towers the team destroyed.
+    dominionVictoryScore: int = None  # For Dominion matches, specifies the points the team had at game end.
+    win: str = None  # String indicating whether or not the team won. There are only two values visibile in public match history.	             (Legal values:  Fail,  Win)
+    dragonKills: int = None  # Number of times the team killed Dragon.
 
     @property
     def first_dragon(self):

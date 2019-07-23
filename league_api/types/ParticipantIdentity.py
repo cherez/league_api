@@ -5,7 +5,7 @@ from .Player import Player
 
 
 class ParticipantIdentity(ApiType):
-    player: Player = None
+    player: Player = None  # Player information.
     participantId: int = None
 
     @property

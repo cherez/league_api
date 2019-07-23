@@ -7,19 +7,19 @@ from .TeamStats import TeamStats
 
 
 class Match(ApiType):
-    seasonId: int = None
-    queueId: int = None
+    seasonId: int = None  # Please refer to the Game Constants documentation.
+    queueId: int = None  # Please refer to the Game Constants documentation.
     gameId: int = None
-    participantIdentities: List[ParticipantIdentity] = None
-    gameVersion: str = None
-    platformId: str = None
-    gameMode: str = None
-    mapId: int = None
-    gameType: str = None
-    teams: List[TeamStats] = None
-    participants: List[Participant] = None
-    gameDuration: int = None
-    gameCreation: int = None
+    participantIdentities: List[ParticipantIdentity] = None  # Participant identity information.
+    gameVersion: str = None  # The major.minor version typically indicates the patch the match was played on.
+    platformId: str = None  # Platform where the match was played.
+    gameMode: str = None  # Please refer to the Game Constants documentation.
+    mapId: int = None  # Please refer to the Game Constants documentation.
+    gameType: str = None  # Please refer to the Game Constants documentation.
+    teams: List[TeamStats] = None  # Team information.
+    participants: List[Participant] = None  # Participant information.
+    gameDuration: int = None  # Match duration in seconds.
+    gameCreation: int = None  # Designates the timestamp when champion select ended and the loading screen appeared, NOT when the game timer was at 0:00.
 
     @property
     def season_id(self):

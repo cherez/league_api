@@ -15,7 +15,7 @@ class CurrentGameParticipant(ApiType):
     spell2Id: int = None  # The ID of the second summoner spell used by this participant
     teamId: int = None  # The team ID of this participant, indicating the participant's team
     spell1Id: int = None  # The ID of the first summoner spell used by this participant
-    summonerId: int = None  # The summoner ID of this participant
+    summonerId: str = None  # The encrypted summoner ID of this participant
 
     @property
     def profile_icon_id(self):

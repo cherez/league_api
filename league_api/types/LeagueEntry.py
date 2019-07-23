@@ -4,18 +4,29 @@ from typing import List, Mapping
 from .MiniSeries import MiniSeries
 
 
-class LeagueItem(ApiType):
+class LeagueEntry(ApiType):
+    queueType: str = None
     summonerName: str = None
     hotStreak: bool = None
     miniSeries: MiniSeries = None
     wins: int = None  # Winning team on Summoners Rift. First placement in Teamfight Tactics.
     veteran: bool = None
     losses: int = None  # Losing team on Summoners Rift. Second through eighth placement in Teamfight Tactics.
-    freshBlood: bool = None
-    inactive: bool = None
     rank: str = None
+    leagueId: str = None
+    inactive: bool = None
+    freshBlood: bool = None
+    tier: str = None
     summonerId: str = None  # Player's summonerId (Encrypted)
     leaguePoints: int = None
+
+    @property
+    def queue_type(self):
+        return self.queueType
+
+    @queue_type.setter
+    def queue_type(self, value):
+        self.queueType = value
 
     @property
     def summoner_name(self):
@@ -40,6 +51,14 @@ class LeagueItem(ApiType):
     @mini_series.setter
     def mini_series(self, value):
         self.miniSeries = value
+
+    @property
+    def league_id(self):
+        return self.leagueId
+
+    @league_id.setter
+    def league_id(self, value):
+        self.leagueId = value
 
     @property
     def fresh_blood(self):
