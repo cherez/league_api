@@ -90,7 +90,7 @@ class APIScraper(scrapy.Spider):
 
     def parse(self, response):
         for name in response.css('li:contains("Standard APIs") a.api_option::attr("api-name")').extract():
-            if not name.endswith('-v3'):
+            if not name.endswith('-v3') and not name.endswith('-v4'):
                 continue
 
             url = 'https://developer.riotgames.com/api-details/' + name
